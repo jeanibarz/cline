@@ -674,6 +674,16 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 			}
 		}, [selectedImages])
 
+		useEffect(() => {
+			const focusListener = () => {
+				textAreaRef.current?.focus()
+			}
+			window.addEventListener("cline-focus-input", focusListener)
+			return () => {
+				window.removeEventListener("cline-focus-input", focusListener)
+			}
+		}, [])
+
 		const handleMenuMouseDown = useCallback(() => {
 			setIsMouseDownOnMenu(true)
 		}, [])

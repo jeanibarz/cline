@@ -172,6 +172,23 @@ export function activate(context: vscode.ExtensionContext) {
 		}),
 	)
 
+	context.subscriptions.push(
+		vscode.commands.registerCommand("cline.focusInput", () => {
+			WebviewProvider.getAllInstances().forEach((instance) => {
+				instance?.controller.postMessageToWebview({
+					type: "action",
+					action: "chatButtonClicked",
+				})
+				setTimeout(() => {
+					instance?.controller.postMessageToWebview({
+						type: "action",
+						action: "focusInput",
+					})
+				}, 50)
+			})
+		}),
+	)
+
 	/*
 	We use the text document content provider API to show the left side for diff view by creating a virtual document for the original content. This makes it readonly so users know to edit the right side if they want to keep their changes.
 
