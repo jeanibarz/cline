@@ -72,6 +72,12 @@ export const ExtensionStateContextProvider: React.FC<{
 	const handleMessage = useCallback((event: MessageEvent) => {
 		const message: ExtensionMessage = event.data
 		switch (message.type) {
+			case "action": {
+				if (message.action === "focusInput") {
+					window.dispatchEvent(new Event("cline-focus-input"))
+				}
+				break
+			}
 			case "state": {
 				setState(message.state!)
 				const config = message.state?.apiConfiguration

@@ -116,6 +116,11 @@
 				"command": "cline.fixWithCline",
 				"title": "Fix with Cline",
 				"category": "Cline"
+			},
+			{
+				"command": "cline.focusInput",
+				"title": "Focus Cline Input",
+				"category": "Cline"
 			}
 		],
 		"keybindings": [
