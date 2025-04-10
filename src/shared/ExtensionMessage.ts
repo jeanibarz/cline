@@ -59,6 +59,7 @@ export interface ExtensionMessage {
 		| "accountLoginClicked"
 		| "accountLogoutClicked"
 		| "accountButtonClicked"
+		| "focusInput"
 	invoke?: Invoke
 	state?: ExtensionState
 	images?: string[]
