@@ -88,10 +88,11 @@ export class OpenAiNativeHandler implements ApiHandler {
 				break
 			}
 			default: {
+				const temperatureValue = model.id === "o4-mini" ? 1.0 : 0
 				const stream = await this.client.chat.completions.create({
 					model: model.id,
 					// max_completion_tokens: this.getModel().info.maxTokens,
-					temperature: 0,
+					temperature: temperatureValue,
 					messages: [{ role: "system", content: systemPrompt }, ...convertToOpenAiMessages(messages)],
 					stream: true,
 					stream_options: { include_usage: true },
